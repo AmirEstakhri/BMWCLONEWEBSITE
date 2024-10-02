@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+<h2>Your Cart Items</h2>
+
+<div class="cart-container">
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid #003DA5; padding: 10px; text-align: left;">Product</th>
+                <th style="border: 1px solid #003DA5; padding: 10px; text-align: left;">Price</th>
+                <th style="border: 1px solid #003DA5; padding: 10px; text-align: left;">Quantity</th>
+                <th style="border: 1px solid #003DA5; padding: 10px; text-align: left;">Total</th>
+                <th style="border: 1px solid #003DA5; padding: 10px; text-align: left;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td style="border: 1px solid #003DA5; padding: 10px;">{{ product.name }}</td>
+                <td style="border: 1px solid #003DA5; padding: 10px;">${{ product.price }}</td>
+                <td style="border: 1px solid #003DA5; padding: 10px;">
+                    <input type="number" value="{{ item.quantity }}" min="1" style="width: 60px;">
+                </td>
+                <td style="border: 1px solid #003DA5; padding: 10px;">
+                </td>
+                <td style="border: 1px solid #003DA5; padding: 10px;">
+                    <button style="background-color: #003DA5; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remove</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px; text-align: right;">
+        <h3>Total: ${{ total_amount }}</h3>
+        <button style="background-color: #0072b5; color: white; border: none; padding: 10px 20px; cursor: pointer;">Checkout</button>
+    </div>
+</div>
+<br></br><br> <br></br><br><br></br><br> <br></br><br>
+<br></br><br> <br></br><br>
+<br></br><br> <br></br><br>
+
+{% endblock %}

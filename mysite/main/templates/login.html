@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .form-outline {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border: 1px solid #0072b5;
+            border-radius: 4px;
+            padding: 10px;
+            width: 100%;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #0072b5;
+        }
+        .btn-primary {
+            background-color: #0072b5;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color: #005a8c;
+        }
+        .social-buttons {
+            margin-top: 10px;
+        }
+        .btn-link {
+            color: #0072b5;
+            font-size: 20px;
+        }
+        .btn-link:hover {
+            color: #005a8c;
+        }
+    </style>
+</head>
+<body>
+
+    <form method="POST" action="/login/" class="login-form">
+        {% csrf_token %}
+        <!-- Username input -->
+        <div class="form-outline">
+            <input type="text" id="username" class="form-control" name="username" required autocomplete="username" />
+            <label class="form-label" for="username">Username</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline">
+            <input type="password" id="password" class="form-control" name="password" required autocomplete="current-password" />
+            <label class="form-label" for="password">Password</label>
+        </div>
+
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+                <!-- Checkbox -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe" />
+                    
+                </div>
+            </div>
+
+            <div class="col">
+                <!-- Simple link -->
+                <a href="#!" style="color: #0072b5;">Forgot password?</a>
+            </div>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary mb-4">Sign in</button>
+
+        <!-- Social buttons -->
+        <div class="text-center">
+            <div class="social-buttons">
+                <button type="button" class="btn btn-link btn-floating" aria-label="Login with Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button type="button" class="btn btn-link btn-floating" aria-label="Login with Google">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button type="button" class="btn btn-link btn-floating" aria-label="Login with Twitter">
+                    <i class="fab fa-twitter"></i>
+                </button>
+                <button type="button" class="btn btn-link btn-floating" aria-label="Login with GitHub">
+                    <i class="fab fa-github"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>

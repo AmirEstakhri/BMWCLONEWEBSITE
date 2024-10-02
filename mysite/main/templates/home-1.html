@@ -1,0 +1,549 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#F5C332">
+  <link rel="shortcut icon" href="{% static 'img/ui/logo.ico' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/plugins/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/plugins/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/plugins/swiper.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/plugins/datepicker.css' %}">
+  <link href="{% static 'css/plugins/mapbox-style.css' %}" rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'css/plugins/fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>bmw-iran</title>
+</head>
+
+<body>
+  <div class="sb-app">
+    <div class="sb-preloader">
+      <div class="sb-preloader-bg"></div>
+      <div class="sb-preloader-body">
+        <div class="sb-loading">
+          <div class="sb-percent"><span class="sb-preloader-number" data-count="101">00</span><span>%</span></div>
+        </div>
+        <div class="sb-loading-bar">
+          <div class="sb-bar"></div>
+        </div>
+      </div>
+    </div>
+    <div class="sb-click-effect"></div>
+    <div class="sb-load"></div>
+    <div class="sb-top-bar-frame">
+      <div class="sb-top-bar-bg"></div>
+      <div class="container">
+        <div class="sb-top-bar">
+          <a href='' class="sb-logo-frame">
+            <img src="{% static 'img/bmwlogo.jpg' %}" alt="bmw">
+          </a>
+          <div class="sb-right-side">
+            <nav id="sb-dynamic-menu" class="sb-menu-transition">
+              <ul class="sb-navigation">
+                <li class="sb-active sb-has-children">
+                  <a href="/">Home</a>
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'account_logout' %}">logout</a>
+                  {% else %}
+                  <ul>
+                   
+                   
+                  </ul>
+                </li>
+                <li class="sb-has-children">
+                  <a href= "accounts/login/">login</a>
+                  <a href="accounts/signup/">Signup</a>
+                  {% endif %}
+                  <ul>
+                    
+                  </ul>
+                </li>
+                <li class="sb-has-children">
+                
+                  <ul>
+                 
+                  </ul>
+                </li>
+                <li class="sb-has-children">
+                  <a href="">categories</a>
+                  <ul>
+                    <li><a href="{%  url 'category' 'sport' %}">sports</a></li>
+                    <li><a href="{%  url 'category' 'SUV' %}">SUVs</a></li>
+                    <li><a href="{%  url 'category' 'Luxury' %}">Luxury</a></li>
+                    <li><a href="{%  url 'category' 'Electric' %}">Electric</a></li>
+                    <li><a href="{% static 'product.html' %}">Product page</a></li>
+                    <li><a href='cart/' >Cart</a></li>
+                    <li><a href="{% static 'checkout.html' %}">Checkout</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href='about/'>about </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="sb-buttons-frame">
+              <div class="sb-btn sb-btn-2 sb-btn-gray sb-btn-icon sb-m-0 sb-btn-cart">
+                <span class="sb-icon">
+                  <img src="{% static 'img/ui/icons/cart.svg' %}" alt="icon">
+                </span>
+                <i class="sb-cart-number">5</i>
+              </div>
+              <div class="sb-menu-btn"><span></span></div>
+              <div class="sb-info-btn"><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-info-bar">
+        <div class="sb-infobar-content">
+          <div class="sb-ib-title-frame sb-mb-30">
+            <h4>Contact</h4><i class="fas fa-arrow-down"></i>
+          </div>
+          <ul class="sb-list sb-mb-30">
+            <li><b>Address:</b><span>Montréal, 1510 Rue Sauvé</span></li>
+            <li><b>Working hours:</b><span>09:00 - 23:00</span></li>
+            <li><b>Phone:</b><span>+02 (044) 756-X6-52</span></li>
+            <li><b>Email:</b><span>starbelly@mail.com</span></li>
+          </ul>
+          <div class="sb-ib-title-frame sb-mb-30">
+            <h4>Instagram</h4><i class="fas fa-arrow-down"></i>
+          </div>
+          <ul class="sb-instagram sb-mb-30">
+            <li><a href="#."><img src="{% static 'img/instagram/1.jpg' %}" alt="instagram"></a></li>
+            <li><a href="#."><img src="{% static 'img/instagram/2.jpg' %}" alt="instagram"></a></li>
+            <li><a href="#."><img src="{% static 'img/instagram/3.jpg' %}" alt="instagram"></a></li>
+            <li><a href="#."><img src="{% static 'img/instagram/4.jpg' %}" alt="instagram"></a></li>
+            <li><a href="#."><img src="{% static 'img/instagram/5.jpg' %}" alt="instagram"></a></li>
+            <li><a href="#."><img src="{% static 'img/instagram/6.jpg' %}" alt="instagram"></a></li>
+          </ul>
+          <hr>
+          <div class="sb-ib-title-frame sb-mb-30">
+            <h4>Latest publications</h4><i class="fas fa-arrow-down"></i>
+          </div>
+          <a href="{% static 'publication-1.html' %}" class="sb-blog-card sb-blog-card-sm sb-mb-30">
+            <div class="sb-cover-frame">
+              <img src="{% static 'img/blog/1.jpg' %}" alt="cover">
+            </div>
+            <div class="sb-blog-card-descr">
+              <h5 class="sb-mb-5">Simple Homemade Tomato Soup</h5>
+              <p class="sb-text sb-text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero optio, sed expedita.</p>
+            </div>
+          </a>
+          <a href="{% static 'publication-1.html' %}" class="sb-blog-card sb-blog-card-sm sb-mb-30">
+            <div class="sb-cover-frame">
+              <img src="{% static 'img/blog/2.jpg' %}" alt="cover">
+            </div>
+            <div class="sb-blog-card-descr">
+              <h5 class="sb-mb-5">Thai Coconut Soup with Tofu and Rice</h5>
+              <p class="sb-text sb-text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero optio, sed expedita.</p>
+            </div>
+          </a>
+          <a href="{% static 'publication-1.html' %}" class="sb-blog-card sb-blog-card-sm sb-mb-30">
+            <div class="sb-cover-frame">
+              <img src="{% static 'img/blog/3.jpg' %}" alt="cover">
+            </div>
+            <div class="sb-blog-card-descr">
+              <h5 class="sb-mb-5">21 Things You Should Absolutely Be Buying at ALDI</h5>
+              <p class="sb-text sb-text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero optio, sed expedita.</p>
+            </div>
+          </a>
+        </div>
+        <div class="sb-info-bar-footer">
+          <ul class="sb-social">
+            <li><a href="#."><i class="far fa-circle"></i></a></li>
+            <li><a href="#."><i class="far fa-circle"></i></a></li>
+            <li><a href="#."><i class="far fa-circle"></i></a></li>
+            <li><a href="#."><i class="far fa-circle"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="sb-minicart">
+        <div class="sb-minicart-content">
+          <div class="sb-ib-title-frame sb-mb-30">
+            <h4>Your order.</h4><i class="fas fa-arrow-down"></i>
+          </div>
+          
+
+
+
+          
+          <a href="{% static 'product.html' %}" class="sb-menu-item sb-menu-item-sm sb-mb-15">
+            <div class="sb-cover-frame">
+              <img src="{% static 'img/menu/4.jpg' %}" alt="product">
+            </div>
+            <div class="sb-card-tp">
+              <h4 class="sb-card-title">Saumon Gravlax</h4>
+              <div class="sb-price"><sub>$</sub> 9</div>
+            </div>
+          </a>
+          <a href="{% static 'product.html' %}" class="sb-menu-item sb-menu-item-sm sb-mb-15">
+            <div class="sb-cover-frame">
+              <img src="{% static 'img/menu/1.jpg' %}" alt="product">
+            </div>
+            <div class="sb-card-tp">
+              <h4 class="sb-card-title">Chevrefrit au miel</h4>
+              <div class="sb-price"><sub>$</sub> 14</div>
+            </div>
+          </a>
+          <a href="{% static 'product.html' %}" class="sb-menu-item sb-menu-item-sm sb-mb-15">
+            <div class="sb-cover-frame">
+              <img src="{% static 'img/menu/2.jpg' %}" alt="product">
+            </div>
+            <div class="sb-card-tp">
+              <h4 class="sb-card-title">Croustillant de poisson</h4>
+              <div class="sb-price"><sub>$</sub> 4</div>
+            </div>
+          </a>
+          <a href="{% static 'product.html' %}" class="sb-menu-item sb-menu-item-sm sb-mb-15">
+            <div class="sb-cover-frame">
+              <img src="{% static 'img/menu/3.jpg' %}" alt="product">
+            </div>
+            <div class="sb-card-tp">
+              <h4 class="sb-card-title">Stracciatella</h4>
+              <div class="sb-price"><sub>$</sub> 11</div>
+            </div>
+          </a>
+          <a href="{% static 'product.html' %}" class="sb-menu-item sb-menu-item-sm sb-mb-15">
+            <div class="sb-cover-frame">
+              <img src="{% static 'img/menu/5.jpg' %}" alt="product">
+            </div>
+            <div class="sb-card-tp">
+              <h4 class="sb-card-title">Carpaccio de daurade</h4>
+              <div class="sb-price"><sub>$</sub> 19</div>
+            </div>
+          </a>
+        </div>
+        <div class="sb-minicart-footer">
+          <a href="{% static 'cart.html' %}" class="sb-btn sb-btn-gray sb-btn-text">
+            <span>View order</span>
+          </a>
+          <a href="{% static 'checkout.html' %}" class="sb-btn sb-btn-text">
+            <span>Checkout</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="sb-dynamic-content" class="sb-transition-fade">
+      <section class="sb-banner">
+        <div class="sb-bg-1">
+          <div></div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="sb-main-title-frame">
+                <div class="sb-main-title">
+                  <span class="sb-suptitle sb-mb-30">Hi, new friend!</span>
+                  <h1 class="sb-mb-30">We do not <span>cook</span>, <br>we <span>MELT</span> your <br>emotions!</h1>
+                  <p class="sb-text sb-text-lg sb-mb-30">WITH OUR ITEMS<br>and CARS</p>
+                  
+                  <a href='about/' class="sb-btn sb-btn-2 sb-btn-gray">
+                    <span class="sb-icon">
+                      <img src="{% static 'img/ui/icons/arrow.svg' %}" alt="icon">
+                    </span>
+                    <span>About us</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-lg-6">
+              <div class="sb-illustration-1">
+                <img src="{% static 'img/bmw.jpg' %}" alt="BMW" class="sb-girl">       
+                <div class="sb-cirkle-1"></div>
+                <div class="sb-cirkle-2"></div>
+                <div class="sb-cirkle-3"></div>
+                <div class="sb-cirkle-4"></div>
+                <div class="sb-cirkle-5"></div>
+                <img src="{% static 'img/illustrations/3.svg' %}" alt="phones" class="sb-pik-1">
+                <img src="{% static 'img/illustrations/1.svg' %}" alt="phones" class="sb-pik-2">
+                <img src="{% static 'img/illustrations/2.svg' %}" alt="phones" class="sb-pik-3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sb-p-60-0">
+        <div class="container">
+          <div class="row flex-md-row-reverse">
+            <div class="col-lg-6 align-self-center sb-mb-30">
+              <h2 class="sb-mb-60">We are doing more than <br>you expect</h2>
+              <ul class="sb-features">
+                <li class="sb-features-item sb-mb-60">
+                  <div class="sb-number">01</div>
+                  <div class="sb-feature-text">
+                    <h3 class="sb-mb-15">We are located in the city center</h3>
+                    <p class="sb-text">we are opening in iran  </p>
+                  </div>
+                </li>
+                <li class="sb-features-item sb-mb-60">
+                  <div class="sb-number">02</div>
+                  <div class="sb-feature-text">
+                    <h3 class="sb-mb-15">Luxury, performance, innovation.
+
+
+
+                    </h3>
+                    <p class="sb-text">BMW combines luxury and cutting-edge technology to deliver an exhilarating driving experience.
+
+
+
+                      odi.</p>
+                  </div>
+                </li>
+                <li class="sb-features-item sb-mb-60">
+                  <div class="sb-number">03</div>
+                  <div class="sb-feature-text">
+                    <h3 class="sb-mb-15">Own fast delivery</h3>
+                    <p class="sb-text">get ur car in less than 2 days.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6 align-self-center">
+              <div class="sb-illustration-2 sb-mb-90">
+                <div class="sb-interior-frame">
+                  <img src="{% static 'img/bmwsuv.jpg' %}" alt="interior" class="sb-interior">
+                </div>
+                <div class="sb-square"></div>
+                <div class="sb-cirkle-1"></div>
+                <div class="sb-cirkle-2"></div>
+                <div class="sb-cirkle-3"></div>
+                <div class="sb-cirkle-4"></div>
+                <div class="sb-experience">
+                  <div class="sb-exp-content">
+                    <p class="sb-h1 sb-mb-10">85</p>
+                    <p class="sb-h3">Years Experience</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sb-p-0-60">
+        <div class="container">
+          <div class="sb-group-title sb-mb-30">
+            <div class="sb-left sb-mb-30">
+              <h2 class="sb-mb-30">What do you <span>like today?</span></h2>
+              <p class="sb-text">Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.</p>
+            </div>
+            <div class="sb-right sb-mb-30">
+              <a href="{% static 'shop-1.html' %}" class="sb-btn sb-m-0">
+                <span class="sb-icon">
+                  <img src="{% static 'img/ui/icons/arrow.svg' %}" alt="icon">
+                </span>
+                <span>Go shopping now</span>
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <a href="{% static 'shop-list-1.html' %}" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
+                <div class="sb-card-body">
+                  <div class="sb-category-icon">
+                    <img src="{% static 'img/i8.jpg' %}" alt="icon">
+                  </div>
+                  <div class="sb-card-descr">
+                    <h3 class="sb-mb-10">Electric</h3>
+                    <p class="sb-text">The electric BMW offers a perfect blend of sustainable performance and innovative design, redefining the future of driving.
+
+
+
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-6">
+              <a href="{% static 'shop-list-1.html' %}" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
+                <div class="sb-card-body">
+                  <div class="sb-category-icon">
+                    <img src="{% static 'img/m7.jpg' %}" alt="icon">
+                  </div>
+                  <div class="sb-card-descr">
+                    <h3 class="sb-mb-10">Luxury</h3>
+                    <p class="sb-text">The luxury BMW embodies sophisticated craftsmanship and cutting-edge technology, providing an unparalleled driving experience.
+
+
+
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-6">
+              <a href="{% static 'shop-list-1.html' %}" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
+                <div class="sb-card-body">
+                  <div class="sb-category-icon">
+                    <img src="{% static 'img/sport.jpg' %}" alt="icon">
+                  </div>
+                  <div class="sb-card-descr">
+                    <h3 class="sb-mb-10">Sport</h3>
+                    <p class="sb-text">BMW's sporty lineup combines dynamic performance with sleek design, delivering an exhilarating driving experienc</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-6">
+              <a href="{% static 'shop-list-1.html' %}" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
+                <div class="sb-card-body">
+                  <div class="sb-category-icon">
+                    <img src="{% static 'img/suv.jpg' %}" alt="icon">
+                  </div>
+                  <div class="sb-card-descr">
+                    <h3 class="sb-mb-10">SUV</h3>
+                    <p class="sb-text">BMW's SUVs offer a perfect blend of luxury, versatility, and robust performance, making every journey a statement of style and capability</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sb-short-menu sb-p-0-90">
+        <div class="sb-bg-2">
+          <div></div>
+        </div>
+        
+        <section style="text-align: center; padding: 20px; border: 2px solid #0072b5; border-radius: 15px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+          <h1 style="color: #1e1e1e; font-size: 48px; margin-bottom: 20px;">BMW: The Ultimate Driving Machine</h1>
+          <h2 style="color: #0072b5; font-size: 36px;">Engineering Excellence and Innovation</h2>
+          <p style="color: #333; font-size: 18px; max-width: 600px; margin: 0 auto;">
+              Join us as we explore the world of BMW, where luxury meets performance and innovation drives the future.
+          </p>
+          <p style="color: #333; font-size: 20px; margin-top: 30px;">Find your desired car below:</p>
+          
+          <div style="position: relative; max-width: 100%; margin-top: 20px;">
+              <img src="{% static 'img/bmwbanner.jpg' %}" alt="Desired BMW Car" style="width: 100%; height: auto; border-radius: 15px;">
+              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); color: white; display: flex; justify-content: center; align-items: center; font-size: 24px; opacity: 0; transition: opacity 0.3s;" 
+                   onmouseover="this.style.opacity='1';" 
+                   onmouseout="this.style.opacity='0';">
+                  Your Dream Car Awaits!
+              </div>
+          </div>
+      </section>
+      <section class="sb-menu-section sb-p-90-60"> 
+        <div class="container">
+            <div class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                {% for product in products %}
+                <div class="col-lg-3" style="flex: 0 0 20%; margin-bottom: 20px;">
+                    <div class="sb-menu-item sb-mb-30" style="padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px;">
+                        <a href="product.html" class="sb-cover-frame">
+                            <img src="{{ product.image.url }}" alt="product" style="max-width: 100%; height: auto;">
+                        </a>
+                        <div class="sb-card-tp" style="margin-top: 10px;">
+                            <h4 class="sb-card-title" style="font-size: 18px; margin: 0;"><a href="product.html">{{ product.name }}</a></h4>
+                            <div class="sb-price" style="font-size: 16px; font-weight: bold; margin-top: 5px;">
+                                <sub>$</sub> {{ product.price }}
+                            </div>
+                        </div>
+                        <div class="sb-description">
+                            <p class="sb-text sb-mb-15">
+                                <span>
+                                    {{ product.description|truncatechars:50 }}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="sb-card-buttons-frame">
+                            <a href="{% url 'product' product.id %}" class="sb-btn sb-btn-2 sb-btn-gray sb-btn-icon sb-m-0">
+                                <span class="sb-icon">
+                                  <img src="{% static 'img/info.jpg' %}" alt="info" style="max-width: 100%; height: auto;">
+                                </span>
+                            </a>
+                            <a href="#." class="sb-btn sb-atc">
+                                <span class="sb-icon">
+                                    <img src="{% static 'img/cart.png' %}" alt="icon">
+                                </span>
+                                <span class="sb-add-to-cart-text">ADD TO CART </span>
+                                <span class="sb-added-text">Added</span>
+                            </a>
+                            <br>
+                                   
+
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+           
+    </section>
+            
+      </section>
+
+      <footer>
+        <div class="container">
+          <div class="sb-footer-frame">
+            <a href="{% static 'home-1.html' %}" class="sb-logo-frame">
+              <img src="{% static 'img/bmwlogo.jpg' %}" alt="Starbelly">
+            </a>
+            <ul class="sb-social">
+              <li><a href="#."><i class="far fa-circle"></i></a></li>
+              <li><a href="#."><i class="far fa-circle"></i></a></li>
+              <li><a href="#."><i class="far fa-circle"></i></a></li>
+              <li><a href="#."><i class="far fa-circle"></i></a></li>
+            </ul>
+            <div class="sb-copy">&copy; late 2021 bmw(amir hossein Estakhri). All Rights Reserved.</div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <div class="sb-popup-frame">
+      <div class="sb-popup-body">
+        <div class="sb-close-popup">+</div>
+        <div class="sb-promo-content">
+          <div class="sb-text-frame">
+            <h3 class="sb-mb-15">Visit bmw and get your coffee*</h3>
+            <h3 class="sb-mb-10"><b class="sb-h2">FOR FREE!</b></h3>
+            <p class="sb-text sb-text-sm sb-mb-15">.</p>
+            <a href="{% static 'product.html' %}" class="sb-btn sb-ppc">
+              <span class="sb-icon">
+                <img src="{% static 'img/ui/icons/arrow.svg' %}" alt="icon">
+              </span>
+              <span>Get it now</span>
+            </a>
+          </div>
+          <div class="sb-image-frame">
+            <div class="sb-illustration-5">
+              <img src="{% static 'img/bmwcup.jpg' %}" alt="cup" class="sb-cup">
+              <div class="sb-cirkle-1"></div>
+              <div class="sb-cirkle-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="{% static 'js/plugins/jquery.min.js' %}"></script>
+  <script src="{% static 'js/plugins/smooth-scroll.js' %}"></script>
+  <script src="{% static 'js/plugins/swup.min.js' %}"></script>
+  <script src="{% static 'js/plugins/swiper.min.js' %}"></script>
+  <script src="{% static 'js/plugins/datepicker.js' %}"></script>
+  <script src="{% static 'js/plugins/isotope.js' %}"></script>
+  <script src="{% static 'js/plugins/sticky.js' %}"></script>
+  <script src="{% static 'js/plugins/mapbox.min.js' %}"></script>
+  <script src="{% static 'js/plugins/fancybox.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

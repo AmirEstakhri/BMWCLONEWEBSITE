@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BMW Cart Page{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .header {
+            background-color: #003DA5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .footer {
+            background-color: #003DA5;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>BMW Cart</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/cart/">Cart</a>
+            <a href="/about/">About</a>
+            <a href="/login/">Login</a>
+        </nav>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        <!-- Your page content goes here -->
+        {% endblock %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 BMW. All rights reserved.</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Set!</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #F5F5F5; color: #333; display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+
+    <h1 style="font-size: 2.5em; color: #003DA5; margin-bottom: 20px;">You are all set!</h1>
+
+    <button onclick="window.location.href='/'" style="background-color: #003DA5; color: white; border: none; border-radius: 5px; padding: 15px 30px; font-size: 1.2em; cursor: pointer; transition: background-color 0.3s;">
+        Go to Home
+    </button>
+
+    <script>
+        // Change button color on hover
+        document.querySelector('button').addEventListener('mouseover', function() {
+            this.style.backgroundColor = '#005A8C';
+        });
+
+        document.querySelector('button').addEventListener('mouseout', function() {
+            this.style.backgroundColor = '#003DA5';
+        });
+    </script>
+
+</body>
+</html>
