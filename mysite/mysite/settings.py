@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'paypal.standard',
 
 
     
@@ -53,6 +54,8 @@ INSTALLED_APPS = [
     'API',
     'rest_framework',
     'main',
+    'payment',
+    
 
      
 ]
@@ -75,7 +78,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,6 +88,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
                 'cart.context_processors.cart',
+                
+                
+                
+                
 
             ],
         },
@@ -174,3 +181,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+
+# Your other settings...
+
+# Stripe API keys
+STRIPE_SECRET_KEY = 'sk_test_51Q5SO6BMnMUE95mbIivqeLCIrHa6xv0iTf1qjvI3rNgdmp8AidXUsdCNTfzppb8Y6OCHuFwLEc6cBUor0Cf910x400UBIvrTGR'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51Q5SO6BMnMUE95mb8yFAj16wRqqxIfhQoB1fa2CxWIsTL82GTbnpRHbfAYhJb8AdGYJ5tFRytJclyCx0JjyZC9DJ00u5FanjXZ'
+

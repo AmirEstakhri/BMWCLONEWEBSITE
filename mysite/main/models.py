@@ -3,6 +3,19 @@ from django.core.validators import  MinLengthValidator ,MaxValueValidator , MinV
 # Create your models here.
 
 
+
+# main/models.py
+
+from django.contrib.auth.models import User
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # Add other fields as necessary
+    
+    def __str__(self):
+        return self.user.username
+
+
 class BlogPost (models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()

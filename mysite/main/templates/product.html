@@ -81,7 +81,7 @@
                     <li><a href="{%  url 'category' 'Luxury' %}">Luxury</a></li>
                     <li><a href="{%  url 'category' 'Electric' %}">Electric</a></li>
                     <li><a href="{% static 'product.html' %}">Product page</a></li>
-                    <li><a href='cart/' >Cart</a></li>
+                    <li><a href="{% url 'checkout' %}"  >Cart</a></li>
                     <li><a href="{% static 'checkout.html' %}">Checkout</a></li>
                   </ul>
                 </li>
@@ -122,7 +122,7 @@
                 <span class="sb-icon">
                   <img src="" alt="icon">
                 </span>
-                <i class="sb-cart-number" id=' cart_quantity'>{{cart_quantity}}  </i>
+                <i class="sb-cart-number" <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}  </i>
               </div>
               <!-- button end -->
 
@@ -202,18 +202,22 @@
       </div>
       <!-- info bar end -->
       <!-- minicart -->
+       
+
+
+
       <div class="sb-minicart">
         <div class="sb-minicart-content">
           <div class="sb-ib-title-frame sb-mb-30">
-            <h4>Your order.</h4><i class="fas fa-arrow-down"></i>
+         <a>   <h4 >Your order.</h4></a> <i class="fas fa-arrow-down"></i>
           </div>
-          <a href="shop-list-1.html" class="sb-menu-item sb-menu-item-sm sb-mb-15">
+          <a href='#' class="sb-menu-item sb-menu-item-sm sb-mb-15">
             <div class="sb-cover-frame">
-              <img src="img/menu/4.jpg" alt="product">
+              <img src={{product.image.url}} alt="product">
             </div>
             <div class="sb-card-tp">
-              <h4 class="sb-card-title">Saumon Gravlax</h4>
-              <div class="sb-price"><sub>$</sub> 9</div>
+              <h4 class="sb-card-title">{{product.name}}</h4>
+              <div class="sb-price"><sub>$</sub> {{product.price}}</div>
             </div>
           </a>
          
@@ -224,7 +228,12 @@
         </div>
         <div class="sb-minicart-footer">
           <!-- button -->
-          <a href="cart.html" class="sb-btn sb-btn-gray sb-btn-text">
+
+
+
+
+
+          <a href="cart/" class="sb-btn sb-btn-gray sb-btn-text">
             <span>View order</span>
           </a>
           <!-- button end -->
@@ -360,7 +369,7 @@
                       <div class="sb-number">01</div>
                       <div class="sb-feature-text">
                         <h4 class="sb-mb-15">Add to the cart and place an order</h4>
-                        <p class="sb-text sb-text-sm">Porro comirton pera nemo veniam</p>
+                        <p class="sb-text sb-text-sm"></p>
                       </div>
                     </div>
                   </div>
@@ -369,7 +378,7 @@
                       <div class="sb-number">02</div>
                       <div class="sb-feature-text">
                         <h4 class="sb-mb-15">Enter your phone number and address</h4>
-                        <p class="sb-text sb-text-sm">Eligendi adipisci numquam.</p>
+                        <p class="sb-text sb-text-sm"></p>
                       </div>
                     </div>
                   </div>
@@ -377,58 +386,111 @@
                     <div class="sb-features-item sb-features-item-sm sb-mb-30">
                       <div class="sb-number">03</div>
                       <div class="sb-feature-text">
-                        <h4 class="sb-mb-15">Enjoy your favorite food at home!</h4>
-                        <p class="sb-text sb-text-sm">Nnecessitatibus praesentium</p>
+                        <h4 class="sb-mb-15">Enjoy your favorite CAR at TRACK!</h4>
+                        <p class="sb-text sb-text-sm"></p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="sb-buttons-frame">
-                  <div class="sb-input-number-frame">
-                    <div class="sb-input-number-btn sb-sub">-</div>
-                    <input type="number" value="1" min="1" max="10">
-                    <div class="sb-input-number-btn sb-add">+</div>
-                  </div>
+               
                   <!-- button -->
 
-
-                  <a href="{% url 'cart_add' product.id %}" class="sb-btn sb-atc" type='button' value='{{product.id}}' id='add_cart'  >
-                    <span class="sb-icon">
-                        <img src="{% static 'img/cart.png' %}" alt="icon">
-                    </span>
-                    <span class="sb-add-to-cart-text">ADD TO CART </span>
-                    <span class="sb-added-text">Added</span>
-                </a>
-
+                  
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <center>
+                            
+                            
+                            {% if product.is_sale %}
+                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    &nbsp;&nbsp;Sale!&nbsp;&nbsp;
+                                    <div class="bi-star-fill"></div>
+                                    </div>
+                    
+                                    <!-- Product price-->
+                                    <strike>
+                                    ${{ product.price }}
+                                    </strike>
+                                    &nbsp;
+                                    ${{ product.sale_price }}
+                    
+                    
+                    
+                            {% else %}
+                                ${{ product.price }}
+                                
+                            {% endif %}
+                    <div class="row justify-content-center">
+                        <div class="col-md-2">Quantity:</div>
+                                    <div class="col-md-2">
+                                    <select class="form-select form-select-sm" id="qty-cart">
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                    </select>
+                                    </div>
+                                </div>
+                               
+                            <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">Add To Cart</button>
+                    
+                        </center>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                              
+                    
                 
-
-
-                <script>
-
-                  $(document).on('click', '#add_cart' , function(e)){
-      
-                    e.preventDefault();
-
-                      success: function(json){
-                        console.log(json);
-                        if(response.status =='success'){
-                          alert('Item added to cart');
-                        }else{
-                          alert('Failed to add item to cart');
-                        }
-                      },
-                      error: function(xhr, status, error,errorMsg){
-                        alert('An error occurred while adding item to cart');
-                      }
-                    });
-                  }
-                </script>
+                    
+                    <script>
+                    // Check if button pressed
+                    $(document).on('click', '#add-cart', function(e){
+                        e.preventDefault();
+                        $.ajax({
+                            type: 'POST',
+                            url: '{% url 'cart_add' %}',
+                            data: {
+                        product_id: $('#add-cart').val(),
+                        product_qty: $('#qty-cart option:selected').text(),
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                        action: 'post'
+                            },
+                    
+                            success: function(json){
+                                //console.log(json)
+                                document.getElementById("cart_quantity").textContent = json.qty
+                                location.reload();
+                            },
+                    
+                            error: function(xhr, errmsg, err){
+                    
+                            }
+                    
+                    
+                        });
+                    
+                    
+                    
+                    })
+                    
+                    
+                    
+                    
+                    </script>
+                    
                   <!-- button end -->
                 </div>
               </div>
             </div>
           </div>
           <!-- filter -->
+          <div class="container-sm">
+
           <div class="sb-filter">
             <a href="#." data-filter=".sb-ingredients-tab" class="sb-filter-link sb-active">Ingredients</a>
             <a href="#." data-filter=".sb-details-tab" class="sb-filter-link">Product details</a>
@@ -454,7 +516,7 @@
             <div class="sb-grid-item sb-details-tab" style="position: absolute">
               <div class="sb-tab">
                 <p class="sb-text sb-mb-15">{{product.description}}</p>
-                <div class="sb-text">Consectetur adipisicing elit. Delectus quibusdam repellendus nesciunt cumque fugit numquam adipisci voluptatum quam, sapiente doloribus ut eaque natus laudantium alias illum quos maiores, quia perferendis.</div>
+                <div class="sb-text"></div>
               </div>
             </div>
             <div class="sb-grid-item sb-reviews-tab" style="position: absolute">
@@ -494,6 +556,9 @@
                           <li><i class="fas fa-star"></i></li>
                         </ul>
                       </div>
+
+                    </div>
+
                       <p class="sb-text sb-mb-15">Tempora ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit Reprehenderit rem accusamus! Quibusdam labore, aliquam dolor harum!</p>
                       <div class="sb-author-frame">
                         <div class="sb-avatar-frame">
@@ -531,6 +596,7 @@
               <!-- slider navigation end -->
             </div>
           </div>
+          
           <div class="swiper-container sb-short-menu-slider-4i">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -694,19 +760,22 @@
                   </div>
                 </div>
               </div>
+              
               <div class="swiper-slide">
                 <div class="sb-menu-item">
                   <a href="shop-list-1.html" class="sb-cover-frame">
                     <img src="img/menu/6.jpg" alt="product">
                   </a>
                   <div class="sb-card-tp">
-                    <h4 class="sb-card-title"><a href="shop-list-1.html">Chevrefrit au miel</a></h4>
-                    <div class="sb-price"><sub>$</sub> 14</div>
+                    <h4 class="sb-card-title"><a href="shop-list-1.html">{{product.name}}</a></h4>
+                    <div class="sb-price"><sub>$</sub> {{product.price}}</div>
                   </div>
+
                   <div class="sb-description">
-                    <p class="sb-text sb-mb-15"><span>tomatoes</span>, <span>nori</span>, <span>feta cheese</span>, <span>mushrooms</span>, <span>rice noodles</span>, <span>corn</span>, <span>shrimp</span>.</p>
+                    <p class="sb-text sb-mb-15">{{product.description}}</span>.</p>
                   </div>
                   <div class="sb-card-buttons-frame">
+                    
                     <!-- button -->
                     <a href="shop-list-1.html" class="sb-btn sb-btn-2 sb-btn-gray sb-btn-icon sb-m-0">
                       <span class="sb-icon">

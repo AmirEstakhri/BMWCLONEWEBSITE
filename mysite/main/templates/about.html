@@ -62,59 +62,50 @@
           <img src="{% static 'img/ui/logo.svg' %}" alt="Starbelly">
         </a>
         <!-- menu -->
-        <div class="sb-right-side">
+        <ddiv class="sb-right-side">
           <nav id="sb-dynamic-menu" class="sb-menu-transition">
             <ul class="sb-navigation">
-              <li class="sb-has-children">
-                <a href="/">Home</a>
-                
-              </li>
               <li class="sb-active sb-has-children">
-                <a href="about-1.html">Pages</a>
-                <ul class="sb-2-col-list">
-                  <li><a href="about-1.html">About 1</a></li>
-                  <li><a href="about-2.html">About 2</a></li>
-                  <li><a href="blog-1.html">Blog style 1</a></li>
-                  <li><a href="blog-2.html">Blog style 2</a></li>
-                  <li><a href="blog-3.html">Blog style 3</a></li>
-                  <li><a href="publication-1.html">Publication 1</a></li>
-                  <li><a href="publication-2.html">Publication 2</a></li>
-                  <li><a href="publication-3.html">Publication 3</a></li>
-                  <li><a href="gallery.html">Gallery</a></li>
-                  <li><a href="gallery-2.html">Gallery 2</a></li>
-                  <li><a href="reviews.html">Reviews</a></li>
-                  <li><a href="reservation.html">Reservation</a></li>
-                  <li><a href="faq.html">FAQ</a></li>
-                  <li><a href="404.html">404</a></li>
-                </ul>
-              </li>
-              <li class="sb-has-children">
-                <a href="menu-1.html">Menu</a>
-                <ul class="sb-2-col-list">
-                  <li><a href="menu-1.html">Menu style 1</a></li>
-                  <li><a href="menu-2.html">Menu style 2</a></li>
-                  <li><a href="menu-3.html">Menu style 3</a></li>
-                  <li><a href="menu-4.html">Menu style 4</a></li>
-                  <li><a href="menu-5.html">Menu style 5</a></li>
-                  <li><a href="menu-6.html">Menu style 6</a></li>
-                </ul>
-              </li>
-              <li class="sb-has-children">
-                <a href="shop-1.html">Shop</a>
+                <a href="/">Home</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'account_logout' %}">logout</a>
+                {% else %}
                 <ul>
-                  <li><a href="shop-1.html">Shop style 1</a></li>
-                  <li><a href="shop-2.html">Shop style 2</a></li>
-                  <li><a href="shop-list-1.html">Shop list 1</a></li>
-                  <li><a href="shop-list-2.html">Shop list 2</a></li>
-                  <li><a href="product.html">Product page</a></li>
-                  <li><a href="cart.html">Cart</a></li>
-                  <li><a href="checkout.html">Checkout</a></li>
+                 
+                 
+                </ul>
+              </li>
+              <li class="sb-has-children">
+                <a href= "accounts/login/">login</a>
+                <a href="accounts/signup/">Signup</a>
+                {% endif %}
+                <ul>
+                  
+                </ul>
+              </li>
+              <li class="sb-has-children">
+              
+                <ul>
+               
+                </ul>
+              </li>
+              <li class="sb-has-children">
+                <a href="">categories</a>
+                <ul>
+                  <li><a href="{%  url 'category' 'sport' %}">sports</a></li>
+                  <li><a href="{%  url 'category' 'SUV' %}">SUVs</a></li>
+                  <li><a href="{%  url 'category' 'Luxury' %}">Luxury</a></li>
+                  <li><a href="{%  url 'category' 'Electric' %}">Electric</a></li>
+                  <li><a href="{% static 'product.html' %}">Product page</a></li>
+                  <li><a href='cart/' >Cart</a></li>
+                  <li><a href="{% static 'checkout.html' %}">Checkout</a></li>
                 </ul>
               </li>
               <li>
-                <a href="contact.html">Contact</a>
+                <a href='about/'>about </a>
               </li>
             </ul>
+          </nav>
           </nav>
           <div class="sb-buttons-frame">
             <!-- button -->
