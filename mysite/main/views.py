@@ -183,7 +183,7 @@ def category(request,cat):
         return render(request, 'category.html', {'products': products, 'category': category})
     except Category.DoesNotExist:
         return HttpResponse("Category not found")
-    
+
 
 # 
 def index(response):

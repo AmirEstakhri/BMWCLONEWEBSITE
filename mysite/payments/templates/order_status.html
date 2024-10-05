@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if payment_successful %}
+        <h1>Payment Successful!</h1>
+        <p>Your order ID is: {{ order_id }}</p>
+        <p>Thank you for your purchase!</p>
+    {% else %}
+        <h1>Payment Failed</h1>
+        <p>There was an issue with your payment. Please try again.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -54,8 +54,9 @@ INSTALLED_APPS = [
     'API',
     'rest_framework',
     'main',
-    'payment',
+    'payments',
     
+
 
      
 ]
@@ -188,5 +189,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Stripe API keys
 STRIPE_SECRET_KEY = 'sk_test_51Q5SO6BMnMUE95mbIivqeLCIrHa6xv0iTf1qjvI3rNgdmp8AidXUsdCNTfzppb8Y6OCHuFwLEc6cBUor0Cf910x400UBIvrTGR'
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51Q5SO6BMnMUE95mb8yFAj16wRqqxIfhQoB1fa2CxWIsTL82GTbnpRHbfAYhJb8AdGYJ5tFRytJclyCx0JjyZC9DJ00u5FanjXZ'
+STRIPE_PUBLIC_KEY = 'pk_test_51Q5SO6BMnMUE95mb8yFAj16wRqqxIfhQoB1fa2CxWIsTL82GTbnpRHbfAYhJb8AdGYJ5tFRytJclyCx0JjyZC9DJ00u5FanjXZ'
 

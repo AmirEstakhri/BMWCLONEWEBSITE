@@ -12,9 +12,6 @@ def cart_summary(request):
 	totals = cart.cart_total()
 	return render(request, "cart_summary.html", {"cart_products":cart_products, "quantities":quantities, "totals":totals})
 
-
-
-
 def cart_add(request):
 	# Get the cart
 	cart = Cart(request)
@@ -66,3 +63,28 @@ def cart_update(request):
 		#return redirect('cart_summary')
 		messages.success(request, ("Your Cart Has Been Updated..."))
 		return response
+
+# def cart_total(self):
+#     total = 0
+#     product_ids = self.cart.keys()  # Get product IDs from the cart
+#     products = Product.objects.filter(id__in=product_ids)  # Fetch product instances
+
+#     for product in products:
+#         qty = self.cart[str(product.id)]  # Access quantity from the cart
+#         # Calculate total based on whether the product is on sale
+#         if product.is_sales and product.sale_price != 0:
+#             total += product.sale_price * qty
+#         else:
+#             total += product.price * qty
+
+#     return total
+
+def cart_total(cart):
+    total = 0
+    for item in cart:
+        product = item['product']
+        if product.is_sales:  # Use is_sales
+            total += product.sales_price * item['quantity']  # Correct field name
+        else:
+            total += product.price * item['quantity']  # Regular price
+    return total

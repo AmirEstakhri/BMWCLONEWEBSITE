@@ -51,6 +51,15 @@
                   {% else %}
                   <ul>
                    
+
+                    {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+                    {% endif %}
+                {% endif %}
+                
+                
+                
                    
                   </ul>
                 </li>
@@ -75,9 +84,8 @@
                     <li><a href="{%  url 'category' 'SUV' %}">SUVs</a></li>
                     <li><a href="{%  url 'category' 'Luxury' %}">Luxury</a></li>
                     <li><a href="{%  url 'category' 'Electric' %}">Electric</a></li>
-                    <li><a href="{% static 'product.html' %}">Product page</a></li>
                     <li><a href='cart/' >Cart</a></li>
-                    <li><a href="{% static 'checkout.html' %}">Checkout</a></li>
+                    <li><a href= "{% url 'checkout' %}" >Checkout</a></li>
                   </ul>
                 </li>
                 <li>
@@ -173,10 +181,11 @@
          
         </div>
         <div class="sb-minicart-footer">
-          <a href="{% static 'cart.html' %}" class="sb-btn sb-btn-gray sb-btn-text">
+          <a href='cart/' class="sb-btn sb-btn-gray sb-btn-text">
             <span>View order</span>
           </a>
-          <a href="{% static 'checkout.html' %}" class="sb-btn sb-btn-text">
+          <a href="{% url 'checkout' %}" class="sb-btn sb-btn-text">
+            
             <span>Checkout</span>
           </a>
         </div>

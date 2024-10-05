@@ -15,13 +15,14 @@ from .views import register_user
 
 urlpatterns = [
 path("", views.index, name="index"),
-path("home-1/", views.index, name="index"),
+path("home-1/", views.index, name="home-1"), 
 #path ('product/' , views.Product , name="product-view"),
 path("login/", views.login_user, name="login"),
 path("logout/", views.logout_user , name="logout"),
 path("about/", about, name="about"),
 path('signup/', signup_user, name='signup'),
 path('register/', register_user, name='register_user'),
+
 
 
  path('blogposts/', BlogPostListView.as_view(), name='blogpost_list'),

@@ -10,10 +10,12 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    old_cart = models.TextField(blank=True, null=True)  # Add this line if you want to store the old cart
     # Add other fields as necessary
     
     def __str__(self):
         return self.user.username
+
 
 
 class BlogPost (models.Model):
@@ -64,13 +66,14 @@ class Customer(models.Model):
 
 # Order Model
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='orders')  
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='main_orders')  # Change here
     order_date = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=50, default='Pending')  #
+    status = models.CharField(max_length=50, default='Pending')
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    
+
     def __str__(self):
         return f"Order {self.id} by {self.customer.email}"
+
 
 from django.db import models
 

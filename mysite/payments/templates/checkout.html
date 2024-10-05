@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<header style="background-color: #343a40; padding: 50px;">
+    <div style="text-align: center; color: white;">
+        <h1 style="font-size: 2.5rem; font-weight: bold;">Checkout</h1>
+        <p style="font-size: 1.25rem; color: #b0b0b0;">Complete Your Purchase</p>
+    </div>
+</header>
+
+<div style="max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h2 style="margin-bottom: 20px;">Total Amount Due</h2>
+    <h3 style="margin-bottom: 20px;">Total: ${{ totals|floatformat:2 }}</h3>
+
+    <form id="payment-form" method="POST" action="{% url 'process_payment' %}">
+        {% csrf_token %}
+        <h4 style="margin-bottom: 15px;">Billing Information</h4>
+
+        <div style="margin-bottom: 15px;">
+            <label for="full-name" style="display: block; margin-bottom: 5px;">Full Name</label>
+            <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" id="full-name" name="full_name" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="email" style="display: block; margin-bottom: 5px;">Email Address</label>
+            <input type="email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" id="email" name="email" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="address" style="display: block; margin-bottom: 5px;">Address</label>
+            <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" id="address" name="address" required>
+        </div>
+
+        
+
+        <button type="submit" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; font-size: 1.25rem; cursor: pointer;">
+            Pay
+        </button>
+    </form>
+</div>
+
+<!-- Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe = Stripe("{{ stripe_public_key }}");
+    var elements = stripe.elements();
+    var cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        stripe.createToken(cardElement).then(function(result) {
+            if (result.error) {
+                document.getElementById('card-errors').textContent = result.error.message;
+            } else {
+                var hiddenInput = document.createElement('input');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.setAttribute('name', 'stripeToken');
+                hiddenInput.setAttribute('value', result.token.id);
+                form.appendChild(hiddenInput);
+                form.submit();
+            }
+        });
+    });
+</script>
+
+{% endblock %}

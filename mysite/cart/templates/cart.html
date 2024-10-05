@@ -8,24 +8,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- color of address bar in mobile browser -->
   <meta name="theme-color" content="#F5C332">
-  <!-- favicon  -->
-  <link rel="shortcut icon" href="img/ui/logo.ico" type="image/x-icon">
+  <!-- favicon -->
+  <link rel="shortcut icon" href="{% static 'img/ui/logo.ico' %}" type="image/x-icon">
   <!-- font awesome css -->
-  <link rel="stylesheet" href="css/plugins/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/plugins/font-awesome.min.css' %}">
   <!-- bootstrap css -->
-  <link rel="stylesheet" href="css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/plugins/bootstrap.min.css' %}">
   <!-- swiper css -->
-  <link rel="stylesheet" href="css/plugins/swiper.min.css">
+  <link rel="stylesheet" href="{% static 'css/plugins/swiper.min.css' %}">
   <!-- datepicker css -->
-  <link rel="stylesheet" href="css/plugins/datepicker.css">
+  <link rel="stylesheet" href="{% static 'css/plugins/datepicker.css' %}">
   <!-- mapbox css -->
-  <link href="css/plugins/mapbox-style.css" rel='stylesheet'>
+  <link href="{% static 'css/plugins/mapbox-style.css' %}" rel='stylesheet'>
   <!-- fancybox css -->
-  <link rel="stylesheet" href="css/plugins/fancybox.min.css">
+  <link rel="stylesheet" href="{% static 'css/plugins/fancybox.min.css' %}">
   <!-- starbelly css -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <!-- page title -->
   <title>Starbelly</title>
+  
 </head>
 
 <body>
@@ -90,13 +91,7 @@
                 <li class="sb-has-children">
                   <a href="menu-1.html">Menu</a>
                   <ul>
-                    <li><a href="menu-1.html">Menu style 1</a></li>
-                    <li><a href="menu-2.html">Menu style 2</a></li>
-                    <li><a href="menu-3.html">Menu style 3</a></li>
-                    <li><a href="menu-4.html">Menu style 4</a></li>
-                    <li><a href="menu-5.html">Menu style 5</a></li>
-                    <li><a href="menu-6.html">Menu style 6</a></li>
-                  </ul>
+        
                 </li>
                 <li class="sb-active sb-has-children">
                   <a href="shop-1.html">Shop</a>
@@ -250,19 +245,18 @@
           </a>
         </div>
         <div class="sb-minicart-footer">
-          <!-- button -->
+          
           <a href="cart.html" class="sb-btn sb-btn-gray sb-btn-text">
             <span>View order</span>
           </a>
-          <!-- button end -->
-          <!-- button -->
+          
           <a href="checkout.html" class="sb-btn sb-btn-text">
             <span>Checkout</span>
           </a>
-          <!-- button end -->
+         
         </div>
       </div>
-      <!-- minicart end -->
+      <!-- minicat end -->
     </div>
     <!-- top bar end -->
 
@@ -485,25 +479,22 @@
   <!-- app wrapper end -->
 
   <!-- jquery js -->
-  <script src="js/plugins/jquery.min.js"></script>
-  <!-- smooth scroll js -->
-  <script src="js/plugins/smooth-scroll.js"></script>
-  <!-- swup js -->
-  <script src="js/plugins/swup.min.js"></script>
-  <!-- swiper js -->
-  <script src="js/plugins/swiper.min.js"></script>
-  <!-- datepicker js -->
-  <script src="js/plugins/datepicker.js"></script>
-  <!-- isotope js -->
-  <script src="js/plugins/isotope.js"></script>
-  <!-- sticky -->
-  <script src="js/plugins/sticky.js"></script>
-  <!-- mapbox js -->
-  <script src="js/plugins/mapbox.min.js"></script>
-  <!-- fancybox js -->
-  <script src="js/plugins/fancybox.min.js"></script>
-  <!-- starbelly js -->
-  <script src="js/main.js"></script>
+  <script src="{% static 'js/plugins/jquery.min.js' %}"></script>
+<!-- smooth scroll js -->
+<script src="{% static 'js/plugins/smooth-scroll.js' %}"></script>
+<!-- swup js -->
+<script src="{% static 'js/plugins/swup.min.js' %}"></script>
+<!-- swiper js -->
+<script src="{% static 'js/plugins/swiper.min.js' %}"></script>
+<!-- datepicker js -->
+<script src="{% static 'js/plugins/datepicker.js' %}"></script>
+<!-- isotope js -->
+<script src="{% static 'js/plugins/isotope.js' %}"></script>
+<script src="{% static 'js/plugins/sticky.js' %}"></script>
+<script src="{% static 'js/plugins/mapbox.min.js' %}"></script>
+<script src="{% static 'js/plugins/fancybox.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
 
 </body>
 
