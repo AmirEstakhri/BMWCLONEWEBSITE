@@ -17,24 +17,11 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from .models import Product, Category
 from .forms import ProductForm, CategoryForm
-# main/views.py
-
 from django.views.generic import ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import BlogPost, Product, Category
-from .forms import BlogPostForm, ProductForm, CategoryForm
 from django.contrib.auth.models import User
-
-from django.views.generic import ListView, UpdateView
-from django.contrib.auth.models import User
-from .forms import UserForm  # You will create this form
-# main/views.py
-
-from django.views.generic import ListView, UpdateView
-from django.contrib.auth.models import User
-from .forms import UserForm  # Ensure this form is defined
-# main/views.py
-
+from .forms import UserForm  
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.contrib import messages

@@ -1,4 +1,4 @@
-# payments/urls.py
+
 
 from django.urls import path
 from .views import checkout, order_status , process_payment , order_confirmation

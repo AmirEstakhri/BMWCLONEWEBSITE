@@ -16,29 +16,25 @@ from .views import register_user
 urlpatterns = [
 path("", views.index, name="index"),
 path("home-1/", views.index, name="home-1"), 
-#path ('product/' , views.Product , name="product-view"),
 path("login/", views.login_user, name="login"),
 path("logout/", views.logout_user , name="logout"),
 path("about/", about, name="about"),
 path('signup/', signup_user, name='signup'),
 path('register/', register_user, name='register_user'),
+path('blogposts/', BlogPostListView.as_view(), name='blogpost_list'),
+path('blogpost/edit/<int:pk>/', BlogPostUpdateView.as_view(), name='edit_blogpost'),
+path('blogpost/delete/<int:pk>/', BlogPostDeleteView.as_view(), name='delete_blogpost'),
 
-
-
- path('blogposts/', BlogPostListView.as_view(), name='blogpost_list'),
-    path('blogpost/edit/<int:pk>/', BlogPostUpdateView.as_view(), name='edit_blogpost'),
-    path('blogpost/delete/<int:pk>/', BlogPostDeleteView.as_view(), name='delete_blogpost'),
-
-    path('products/', ProductListView.as_view(), name='product_list'),
-    path('product/edit/<int:pk>/', ProductUpdateView.as_view(), name='edit_product'),
-    path('product/delete/<int:pk>/', ProductDeleteView.as_view(), name='delete_product'),
+path('products/', ProductListView.as_view(), name='product_list'),
+path('product/edit/<int:pk>/', ProductUpdateView.as_view(), name='edit_product'),
+path('product/delete/<int:pk>/', ProductDeleteView.as_view(), name='delete_product'),
     
-    path('categories/', CategoryListView.as_view(), name='category_list'),
-    path('category/edit/<int:pk>/', CategoryUpdateView.as_view(), name='edit_category'),
-    path('category/delete/<int:pk>/', CategoryDeleteView.as_view(), name='delete_category'),
+path('categories/', CategoryListView.as_view(), name='category_list'),
+path('category/edit/<int:pk>/', CategoryUpdateView.as_view(), name='edit_category'),
+path('category/delete/<int:pk>/', CategoryDeleteView.as_view(), name='delete_category'),
    
-    path('users/', UserListView.as_view(), name='user_list'),
-    path('user/edit/<int:pk>/', UserUpdateView.as_view(), name='edit_user'),
+path('users/', UserListView.as_view(), name='user_list'),
+path('user/edit/<int:pk>/', UserUpdateView.as_view(), name='edit_user'),
 
 path('accounts/profile/', views.accountsprofile, name='accountsprofile'),
 path('admin-dashboard/', AdminDashboardView.as_view(), name='admin_dashboard'),

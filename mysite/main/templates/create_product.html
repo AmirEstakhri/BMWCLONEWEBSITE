@@ -4,29 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef;
             margin: 0;
             padding: 20px;
         }
         h1 {
-            color: #333;
+            color: #4A4A4A;
             text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
         }
         form {
             max-width: 500px;
             margin: 0 auto;
             background: white;
-            padding: 20px;
-            border-radius: 5px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .image-preview {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .image-preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         label {
             margin-bottom: 5px;
             display: block;
             font-weight: bold;
+            color: #007bff;
         }
         input[type="text"],
         input[type="number"],
@@ -38,19 +55,29 @@
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
         button {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #007bff; /* Primary color */
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: translateY(-2px);
         }
         a {
             display: block;
@@ -58,19 +85,48 @@
             margin-top: 20px;
             text-decoration: none;
             color: #007bff;
+            font-weight: bold;
         }
         a:hover {
             text-decoration: underline;
         }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+        }
     </style>
+    <script>
+        function previewImage(event) {
+            const preview = document.getElementById('imagePreview');
+            preview.style.display = 'block';
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(){
+                preview.src = reader.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    </script>
 </head>
 <body>
-    <h1>Create Product</h1>
+    <h1><i class="fas fa-box"></i> Create Product</h1>
+    
     <form method="post" enctype="multipart/form-data">  <!-- Use 'enctype' for file uploads -->
         {% csrf_token %}
+        <div class="image-preview" style="display:none;">
+            <img id="imagePreview" alt="Image Preview">
+        </div>
         {{ form.as_p }}  <!-- Renders the form fields -->
-        <button type="submit">Create Product</button>
+        <label for="id_image">Product Image</label>
+        <input type="file" id="id_image" name="image" accept="image/*" onchange="previewImage(event)">
+        <button type="submit"><i class="fas fa-plus"></i> Create Product</button>
     </form>
-    <a href="{% url 'admin_dashboard' %}">Back to Dashboard</a>
+    
+    <a href="{% url 'admin_dashboard' %}"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    
+    <footer>
+        &copy; 2024 Admin Dashboard. All Rights Reserved.
+    </footer>
 </body>
 </html>
